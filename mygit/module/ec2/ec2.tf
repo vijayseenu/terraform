@@ -13,8 +13,8 @@ resource "aws_instance" "myec2" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t2.micro"
   key_name      = "myprivate"
-  count         = 1
-  tags = {
-    Name = element(var.tags, count.index)
-  }
+}
+
+output "ec2_output" {
+  value = aws_instance.myec2
 }
